@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # Mount the physiqual engine
+  mount Physiqual::Engine => '/physiqual'
   get 'welcome/index'
   root 'welcome#index'
 

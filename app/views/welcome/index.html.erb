@@ -3,7 +3,7 @@
 
 
 <div>
-  <p>Sign in with <%= link_to 'google', 'http://google.com', class: 'waves-effect waves-light btn'%> </p>
-  <p>Sign in with <%= link_to 'fitbit', 'http://google.com', class: 'waves-effect waves-light btn'%></p>
+  <p><%= link_to 'google', physiqual.authorize_oauth_session_index_path(provider: 'google'), class: 'waves-effect waves-light btn'%> </p>
+  <p><%= link_to 'fitbit', physiqual.authorize_oauth_session_index_path(provider: 'fitbit'), class: 'waves-effect waves-light btn'%></p>
   
 </div>
