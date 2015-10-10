@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # Mount the physiqual engine
   mount Physiqual::Engine => '/physiqual'
   get 'welcome/index'
+  get 'welcome/example'
+  get 'welcome/example_data'
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,39 +1,27 @@
-<nav>
-	<div class="nav-wrapper">
-		<a href="http://www.physiqual.com" class="brand-logo">Physiqual</a>
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			<li><a href="github.com/roqua/physiqual" target="_blank">Github</a></li>
-		</ul>
-	</div>
-</nav>
-<div class="container">
-	<p><i>Let me hear your body talk...</i></p>
-	<div class="row">
+<div class="row">
+  <div class="col s4 flow-text center">
+    <i class="large material-icons">insert_chart</i>
+    <h5>Easy to use</h5>
+    <p>Inform the participants, run the study, and export their data. It's as easy as 1,2,3.</p>
+  </div>
+  <div class="col s4 flow-text center">
+    <i class="large material-icons">cloud</i>
+    <h5>Reliable</h5>
+    <p>Relies on the cloud services provided by large service providers.</p>
+  </div>
+  <div class="col s4 flow-text center">
+    <i class="large material-icons">view_carousel</i>
+    <h5>Multiplatform</h5>
+    <p>Supports both Fitbit and Google Fit, and can be extended to other platforms.</p>
+  </div>
+</div>
 
-		<div class="col s4 flow-text center">
-			<i class="large material-icons">insert_chart</i>
-			<h5>Easy to use</h5>
-			<p>Inform the participants, run the study, and export their data. It's as easy as 1,2,3.</p>
-		</div>
-		<div class="col s4 flow-text center">
-			<i class="large material-icons">cloud</i>
-			<h5>Reliable</h5>
-			<p>Relies on the cloud services provided by large service providers.</p>
-		</div>
-		<div class="col s4 flow-text center">
-			<i class="large material-icons">view_carousel</i>
-			<h5>Multiplatform</h5>
-			<p>Supports both Fitbit and Google Fit, and can be extended to other platforms.</p>
-		</div>
-
-	</div>
-	<div class='row'>
-	<h4 class="">Supported service providers</h4>
-		<div class="col s6 flow-text center">
-			<p><%= link_to 'google', physiqual.authorize_oauth_session_index_path(provider: 'google', params: {email: 'framando@physiqual.com'}), class: 'waves-effect waves-light btn'%> </p>
-		</div>
-		<div class="col s6 flow-text center">
-			<p><%= link_to 'fitbit', physiqual.authorize_oauth_session_index_path(provider: 'fitbit'), class: 'waves-effect waves-light btn'%></p>
-		</div>
-	</div>
+<div class='row'>
+  <h4 class="">Supported service providers</h4>
+  <div class="col s6 flow-text center">
+    <p><%= link_to 'google', physiqual.authorize_oauth_session_index_path(provider: 'google', params: {email: 'framando@physiqual.com'}), class: 'waves-effect waves-light btn'%> </p>
+  </div>
+  <div class="col s6 flow-text center">
+    <p><%= link_to 'fitbit', physiqual.authorize_oauth_session_index_path(provider: 'fitbit'), class: 'waves-effect waves-light btn'%></p>
+  </div>
 </div>
