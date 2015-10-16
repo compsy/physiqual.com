@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+#forkme {
+  position: absolute;
+  text-align: right;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
+.forkme-image {
+  width:50%;
+  height:50%;
+}
