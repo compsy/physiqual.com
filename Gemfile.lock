@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/roqua/physiqual.git
-  revision: 899825bcfaff73b9aa48d563efb12d2401f49509
+  revision: 86ce2e1390c76e9cf506f1bd402df8a572226621
   specs:
     physiqual (0.0.1)
       active_interaction (~> 2.1.2)
