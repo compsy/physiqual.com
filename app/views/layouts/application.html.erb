@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Physiqual</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <head>
+    <title>Physiqual</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-</head>
-<body>
-<nav>
-  <div class="nav-wrapper container">
-    <a href="http://www.physiqual.com" class="brand-logo">Physiqual
-      <i style="display:inline; font-size:0.5em" class="hide-on-med-and-down">Let me hear your body talk...</i></a>
-    <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper container">
+        <a href="http://www.physiqual.com" class="brand-logo">Physiqual
+          <i style="display:inline; font-size:0.5em" class="hide-on-med-and-down">Let me hear your body talk...</i></a>
+        <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><%= link_to 'Login', welcome_index_path %></li>
-      <li><%= link_to 'Example', welcome_example_path %></li>
-      <li><a href="https://github.com/roqua/physiqual" target="_blank">Github</a></li>
-    </ul>
-    <ul class="side-nav" id="mobile">
-      <li><%= link_to 'Login', welcome_index_path %></li>
-      <li><%= link_to 'Example', welcome_example_path %></li>
-      <li><a href="https://github.com/roqua/physiqual" target="_blank">Github</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="section">
-    <%= yield %>
-  </div>
-</div>
-</body>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to 'Login', welcome_index_path %></li>
+          <li><%= link_to 'Example', welcome_example_path %></li>
+          <li><a href="https://github.com/roqua/physiqual" target="_blank">Github</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile">
+          <li><%= link_to 'Login', welcome_index_path %></li>
+          <li><%= link_to 'Example', welcome_example_path %></li>
+          <li><a href="https://github.com/roqua/physiqual" target="_blank">Github</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="forkme" class="normal">
+      <a href="https://github.com/roqua/physiqual" target="_blank">
+        <%= image_tag "forkme.png", class: 'forkme-image' %>
+      </a>
+    </div>
+    <div class="container">
+      <div class="section">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
 </html>
