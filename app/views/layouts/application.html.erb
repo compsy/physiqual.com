@@ -20,11 +20,11 @@
         <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><%= link_to 'Login', "/" %></li>
+          <li><%= session[:email].blank? ? link_to('Login', "/auth/google_oauth2") : link_to('Logout', "/logout", method: :delete) %></li>
           <li><%= link_to 'Example', "/welcome/example" %></li>
         </ul>
         <ul class="side-nav" id="mobile">
-          <li><%= link_to 'Login', "/" %></li>
+          <li><%= session[:email].blank? ? link_to('Login', "/auth/google_oauth2") : link_to('Logout', "/logout", method: :delete) %></li>
           <li><%= link_to 'Example', "/welcome/example" %></li>
           <li><a href="https://github.com/roqua/physiqual" target="_blank">Github</a></li>
         </ul>

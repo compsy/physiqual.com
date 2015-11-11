@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get 'welcome/example_data'
   root 'welcome#index'
 
+  # Omniauth
+  get '/auth/:provider/callback', :to => 'sessions#create'
+  get '/auth/failure',            :to => 'sessions#failure'
+  delete '/logout',               :to => 'sessions#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

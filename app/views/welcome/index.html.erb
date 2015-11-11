@@ -26,12 +26,19 @@
 <div class="divider"></div>
 <div class="section">
 <div class="row center">
-  <h3 class="light header">Supported service providers</h3>
-  <div class="col s6 flow-text center">
-    <p><%= link_to 'google', physiqual.authorize_oauth_session_index_path(provider: 'google', params: {email: 'framando@physiqual.com'}), class: 'waves-effect waves-light btn orange'%> </p>
-  </div>
-  <div class="col s6 flow-text center">
-    <p><%= link_to 'fitbit', physiqual.authorize_oauth_session_index_path(provider: 'fitbit', params: {email: 'framando@physiqual.com'}), class: 'waves-effect waves-light btn orange'%></p>
-  </div>
+  <% if session[:email] %>
+    <h3 class="light header">Get an overview of your recent fitness data</h3>
+    <div class="col s6 flow-text center">
+      <p><%= link_to 'google', physiqual.oauth_session_index_path(params: {email: session[:email], state: 'google' }), class: 'waves-effect waves-light btn orange'%> </p>
+    </div>
+    <div class="col s6 flow-text center">
+      <p><%= link_to 'fitbit', physiqual.oauth_session_index_path(params: {email: session[:email], state: 'fitbit' }), class: 'waves-effect waves-light btn orange'%></p>
+    </div>
+  <% else %>
+    <h3 class="light header">Log in with your Google account</h3>
+    <div class="col s12 flow-text center">
+      <p><%= link_to 'Login', "/auth/google_oauth2", class: 'waves-effect waves-light btn orange'%> </p>
+    </div>
+  <% end %>
 </div>
 </div>
