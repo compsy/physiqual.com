@@ -55,3 +55,5 @@ group :development, :test do
 end
 
 gem 'dotenv-rails'
+
+gem 'omniauth-google-oauth2'
