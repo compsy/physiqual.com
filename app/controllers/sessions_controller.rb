@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     reset_session
     auth = request.env['omniauth.auth']
     Rails.logger.info "OmniAuth info: #{auth.to_yaml}"
-    #Rails.logger.info request.env.inspect
 
     session[:email]  = auth['extra']['raw_info']['email']
     session[:name]   = auth['extra']['raw_info']['name']
