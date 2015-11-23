@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/roqua/physiqual.git
-  revision: 26cf35c454b9ba60f23d51019740aa5d21325a8e
+  revision: 61ad9a20a324ece2e3446e6753f63ab5e933b9b2
   branch: fb-update-to-omniauth
   specs:
     physiqual (0.0.1)
