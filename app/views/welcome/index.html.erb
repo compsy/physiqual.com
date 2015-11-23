@@ -26,13 +26,13 @@
 <div class="divider"></div>
 <div class="section">
 <div class="row center">
-  <% if session[:email] %>
+  <% if session[:physiqual_user_id] %>
     <h3 class="light header">Get an overview of your recent fitness data</h3>
     <div class="col s6 flow-text center">
-      <p><%= link_to 'google', physiqual.oauth_session_index_path(params: {email: session[:email], state: 'google' }), class: 'waves-effect waves-light btn orange'%> </p>
+      <p><%= link_to 'google', '/physiqual/auth/google_oauth2/authorize?return_url=%2F', class: 'waves-effect waves-light btn orange'%> </p>
     </div>
     <div class="col s6 flow-text center">
-      <p><%= link_to 'fitbit', physiqual.oauth_session_index_path(params: {email: session[:email], state: 'fitbit' }), class: 'waves-effect waves-light btn orange'%></p>
+      <p><%= link_to 'fitbit', '/physiqual/auth/fitbit_oauth2/authorize?return_url=%2F', class: 'waves-effect waves-light btn orange'%></p>
     </div>
   <% else %>
     <h3 class="light header">Log in with your Google account</h3>

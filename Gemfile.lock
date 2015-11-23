@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/roqua/physiqual.git
-  revision: 37ccdf55b4e9aa8c07e5189c889398512f08ea77
+  revision: f5ba68655d4b9b1eebad0cbd4f7d01907c9031fe
+  branch: fb-update-to-omniauth
   specs:
     physiqual (0.0.1)
       active_interaction (~> 2.1.2)
@@ -8,6 +9,8 @@ GIT
       interpolator
       jquery-rails
       oauth2
+      omniauth-fitbit-oauth2
+      omniauth-google-oauth2
       rails (~> 4.2.4)
       spliner
 
@@ -100,11 +103,11 @@ GEM
       mime-types (>= 1.16, < 3)
     mime-types (2.6.2)
     mini_portile (0.6.2)
-    minitest (5.8.2)
+    minitest (5.8.3)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    nokogiri (1.6.6.2)
+    nokogiri (1.6.6.3)
       mini_portile (~> 0.6.0)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
@@ -115,6 +118,8 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-fitbit-oauth2 (1.0.0)
+      omniauth-oauth2 (~> 1.3)
     omniauth-google-oauth2 (0.2.10)
       addressable (~> 2.3)
       jwt (~> 1.0)

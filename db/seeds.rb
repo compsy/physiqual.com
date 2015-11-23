@@ -1,4 +1,4 @@
 if Rails.env.development? || Rails.env.test?
-	Physiqual::User.create(email: 'framando@physiqual.com')
+	Physiqual::User.create(user_id: 'framando@physiqual.com')
 end
 
