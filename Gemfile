@@ -21,7 +21,7 @@ gem 'jbuilder'
 gem 'sdoc', group: :doc
 
 # Install physiqual
-gem 'physiqual', github: 'roqua/physiqual', branch: 'fb-update-to-omniauth'
+gem 'physiqual', github: 'roqua/physiqual'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
