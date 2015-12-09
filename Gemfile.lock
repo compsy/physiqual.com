@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/roqua/physiqual.git
-  revision: 13ce0be4ccb7fb17a6fa21ef76d5b3823b909148
+  revision: b3462d2df1e383ef0763e7ab39357e71033f977a
   branch: ae-new-tokens
   specs:
     physiqual (0.0.1)

@@ -29,10 +29,10 @@
   <% if session[:physiqual_user_id] %>
     <h3 class="light header">Get an overview of your recent fitness data</h3>
     <div class="col s6 flow-text center">
-      <p><%= link_to 'google', '/physiqual/auth/google_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange'%> </p>
+      <p><%= link_to 'google', '/physiqual/auth/physiqual_google_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange'%> </p>
     </div>
     <div class="col s6 flow-text center">
-      <p><%= link_to 'fitbit', '/physiqual/auth/fitbit_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange'%></p>
+      <p><%= link_to 'fitbit', '/physiqual/auth/physiqual_fitbit_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange'%></p>
     </div>
   <% else %>
     <h3 class="light header">Log in with your Google account</h3>
