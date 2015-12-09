@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   # Omniauth
   get '/auth/:provider/callback', :to => 'sessions#create'
   get '/auth/failure',            :to => 'sessions#failure'
-  get '/auth/:provider',          :to => 'sessions#new'
   delete '/logout',               :to => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
