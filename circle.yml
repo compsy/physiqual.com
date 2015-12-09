@@ -2,7 +2,7 @@ machine:
   timezone:
     Europe/Amsterdam
   ruby:
-    version: 2.2.0
+    version: 2.2.3
 test:
   override:
     - bundle exec rspec spec:
