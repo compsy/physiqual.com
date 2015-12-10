@@ -21,7 +21,7 @@ gem 'jbuilder'
 gem 'sdoc', group: :doc
 
 # Install physiqual
-gem 'physiqual', github: 'roqua/physiqual'
+gem 'physiqual', github: 'roqua/physiqual', branch: 'ae-fix-catmull'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -58,8 +58,12 @@ group :development, :test do
   gem 'rspec-rails'
 
   gem 'rubocop'
-end
 
-gem 'dotenv-rails'
+  # Gems for better debugging
+  gem 'meta_request', require: 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'dotenv-rails'
+end
 
 gem 'omniauth-google-oauth2'
