@@ -32,9 +32,14 @@ gem 'physiqual', github: 'roqua/physiqual'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :production, :staging do
+group :production do
   gem 'pg'
+  # Reduce log lines
   gem 'lograge'
+  # Better logging for heroku
+  gem 'rails_12factor'
+  # Reduce log noise
+  gem 'quiet_assets'
 end
 
 group :development, :test do
