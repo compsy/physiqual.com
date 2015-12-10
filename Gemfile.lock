@@ -97,6 +97,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.2)
+    lograge (0.3.5)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -234,6 +238,7 @@ DEPENDENCIES
   dotenv-rails
   jbuilder
   jquery-rails
+  lograge
   omniauth-google-oauth2
   pg
   physiqual!

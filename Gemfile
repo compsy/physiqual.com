@@ -34,6 +34,7 @@ gem 'physiqual', github: 'roqua/physiqual'
 
 group :production, :staging do
   gem 'pg'
+  gem 'lograge'
 end
 
 group :development, :test do
