@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/roqua/physiqual.git
-  revision: f79ba7619d2e84162521ff30d05bdc669652cc74
-  branch: ae-fix-catmull
+  revision: 8298f09cc21677e29c7254fc68cc81ef9e021f5a
   specs:
     physiqual (0.0.1)
       active_interaction (~> 2.1.2)
@@ -36,7 +35,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_interaction (2.1.4)
+    active_interaction (2.1.5)
       activemodel (>= 3.2, < 5)
     activejob (4.2.4)
       activesupport (= 4.2.4)
