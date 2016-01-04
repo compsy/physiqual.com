@@ -58,8 +58,12 @@ group :development, :test do
   gem 'rspec-rails'
 
   gem 'rubocop'
-end
 
-gem 'dotenv-rails'
+  # Gems for better debugging
+  gem 'meta_request', require: 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'dotenv-rails'
+end
 
 gem 'omniauth-google-oauth2'
