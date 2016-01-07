@@ -1,5 +1,7 @@
 # rubocop:disable Metrics/ClassLength, Metrics/MethodLength
 class WelcomeController < ApplicationController
+  include WelcomeHelper
+
   def index
   end
 

@@ -1,44 +1,69 @@
 <div class="section">
-<div class="row">
-  <h3 class="col s12 light center header orange-text">Where Sensors and Self-Report Meet</h3>
-  <h5 class="center header col s12 light">Physiqual is a framework for resampling, imputing, and unifying health and fitness data</h5>
-</div>
+  <div class="row">
+    <h3 class="col s12 light center header orange-text">Where Sensors and Self-Report Meet</h3>
+    <h5 class="center header col s12 light">Physiqual is a framework for resampling, imputing, and unifying health and
+      fitness data</h5>
+  </div>
 </div>
 <div class="section">
-<div class="row">
-  <div class="col s12 m4 flow-text center">
-    <i class="large material-icons light-blue-text">insert_chart</i>
-    <p class="promo-caption">Easy to use</p>
-    <p class="light center"> Inform the participants, run the study, and export their data. It's as easy as 1, 2, 3.</p>
-  </div>
-  <div class="col s12 m4 flow-text center">
-    <i class="large material-icons light-blue-text">cloud</i>
-    <p class="promo-caption">Reliable</p>
-    <p class="light center"> Relies on the cloud services provided by large service providers.</p>
-  </div>
-  <div class="col s12 m4 flow-text center">
-    <i class="large material-icons light-blue-text">view_carousel</i>
-    <p class="promo-caption">Multiplatform</p>
-    <p class="light center"> Supports both Fitbit and Google Fit, and can be extended to other platforms.</p>
+  <div class="row">
+    <div class="col s12 m4 flow-text center">
+      <i class="large material-icons light-blue-text">insert_chart</i>
+      <p class="promo-caption">Easy to use</p>
+      <p class="light center"> Inform the participants, run the study, and export their data. It's as easy as 1, 2,
+        3.</p>
+    </div>
+    <div class="col s12 m4 flow-text center">
+      <i class="large material-icons light-blue-text">cloud</i>
+      <p class="promo-caption">Reliable</p>
+      <p class="light center"> Relies on the cloud services provided by large service providers.</p>
+    </div>
+    <div class="col s12 m4 flow-text center">
+      <i class="large material-icons light-blue-text">view_carousel</i>
+      <p class="promo-caption">Multiplatform</p>
+      <p class="light center"> Supports both Fitbit and Google Fit, and can be extended to other platforms.</p>
+    </div>
   </div>
 </div>
-</div>
-<div class="divider"></div>
-<div class="section">
-<div class="row center">
-  <% if session[:physiqual_user_id] %>
-    <h3 class="light header">Get an overview of your recent fitness data</h3>
-    <div class="col s6 flow-text center">
-      <p><%= link_to 'google', '/physiqual/auth/physiqual_google_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange'%> </p>
-    </div>
-    <div class="col s6 flow-text center">
-      <p><%= link_to 'fitbit', '/physiqual/auth/physiqual_fitbit_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange'%></p>
-    </div>
-  <% else %>
-    <h3 class="light header">Log in with your Google account</h3>
-    <div class="col s12 flow-text center">
-      <p><%= link_to 'Login', "/auth/google_oauth2", class: 'waves-effect waves-light btn orange'%> </p>
+<% if logged_in? %>
+  <% unless number_of_tokens == 0 %>
+    <div class="divider"></div>
+    <div class="section">
+      <div class="row center">
+        <h3 class="light header">Get an overview of your recent fitness data</h3>
+        <div class="col s12 flow-text center">
+          <p><%= link_to 'Show me', '/physiqual/exports.html?first_measurement=2015-10-07 10:00&number_of_days=5', class: 'waves-effect waves-light btn orange', data: {"no-turbolink" => true} %></p>
+        </div>
+      </div>
     </div>
   <% end %>
-</div>
-</div>
+  <% unless number_of_tokens == WelcomeHelper::NUMBER_OF_SUPPORTED_SERVICES %>
+    <% column_size = 12 / (WelcomeHelper::NUMBER_OF_SUPPORTED_SERVICES - number_of_tokens) %>
+    <div class="divider"></div>
+    <div class="section">
+      <div class="row center">
+        <h3 class="light header">Add data from a service provider</h3>
+        <% unless google_token? %>
+          <div class="<%= "col s#{column_size} flow-text center" %>">
+            <p><%= link_to 'google', '/physiqual/auth/physiqual_google_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange' %> </p>
+          </div>
+        <% end %>
+        <% unless fitbit_token? %>
+          <div class="<%= "col s#{column_size} flow-text center" %>">
+            <p><%= link_to 'fitbit', '/physiqual/auth/physiqual_fitbit_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange' %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="divider"></div>
+  <div class="section">
+    <div class="row center">
+      <h3 class="light header">Log in with your Google account</h3>
+      <div class="col s12 flow-text center">
+        <p><%= link_to 'Login', "/auth/google_oauth2", class: 'waves-effect waves-light btn orange' %> </p>
+      </div>
+    </div>
+  </div>
+<% end %>
