@@ -10,14 +10,17 @@ module WelcomeHelper
   end
 
   def number_of_tokens
+    # precondition: user is logged in (logged_in?)
     current_user.physiqual_tokens.size
   end
 
   def fitbit_token?
+    # precondition: user is logged in (logged_in?)
     current_user.fitbit_tokens.size > 0
   end
 
   def google_token?
+    # precondition: user is logged in (logged_in?)
     current_user.google_tokens.size > 0
   end
 end
