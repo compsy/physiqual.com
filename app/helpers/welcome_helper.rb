@@ -9,7 +9,7 @@ module WelcomeHelper
     session[:physiqual_user_id] && current_user
   end
 
-  def has_token?
+  def token?
     # precondition: user is logged in (logged_in?)
     current_user.physiqual_tokens.size
   end
