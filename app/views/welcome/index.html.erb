@@ -26,33 +26,30 @@
   </div>
 </div>
 <% if logged_in? %>
-  <% unless number_of_tokens == 0 %>
+  <% if has_token? %>
     <div class="divider"></div>
     <div class="section">
       <div class="row center">
         <h3 class="light header">Get an overview of your recent fitness data</h3>
         <div class="col s12 flow-text center">
-          <p><%= link_to 'Show me', '/physiqual/exports.html?first_measurement=2015-10-07 10:00&number_of_days=5', class: 'waves-effect waves-light btn orange', data: {"no-turbolink" => true} %></p>
+          <p><%= link_to 'Show me', '/physiqual/exports.html?first_measurement=2015-10-07 10:00&number_of_days=5', class: 'waves-effect waves-light btn orange async-button', data: {'no-turbolink' => true} %></p>
         </div>
       </div>
     </div>
-  <% end %>
-  <% unless number_of_tokens == WelcomeHelper::NUMBER_OF_SUPPORTED_SERVICES %>
-    <% column_size = 12 / (WelcomeHelper::NUMBER_OF_SUPPORTED_SERVICES - number_of_tokens) %>
+  <% else %>
     <div class="divider"></div>
     <div class="section">
       <div class="row center">
-        <h3 class="light header">Add data from a service provider</h3>
-        <% unless google_token? %>
-          <div class="<%= "col s#{column_size} flow-text center" %>">
-            <p><%= link_to 'google', '/physiqual/auth/physiqual_google_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange' %> </p>
-          </div>
-        <% end %>
-        <% unless fitbit_token? %>
-          <div class="<%= "col s#{column_size} flow-text center" %>">
-            <p><%= link_to 'fitbit', '/physiqual/auth/physiqual_fitbit_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange' %></p>
-          </div>
-        <% end %>
+        <h3 class="light header">Choose from where to import data</h3>
+        <div class="col s5 flow-text center">
+          <p><%= link_to 'Google Fit', '/physiqual/auth/physiqual_google_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange' %></p>
+        </div>
+        <div class="col s2 flow-text center">
+          <p>OR</p>
+        </div>
+        <div class="col s5 flow-text center">
+          <p><%= link_to 'fitbit', '/physiqual/auth/physiqual_fitbit_oauth2/authorize?return_url=%2Fphysiqual%2Fexports.html%3Ffirst_measurement%3D2015-10-07%252010%3A00%26number_of_days%3D5', class: 'waves-effect waves-light btn orange' %></p>
+        </div>
       </div>
     </div>
   <% end %>
