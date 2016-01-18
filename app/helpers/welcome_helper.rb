@@ -4,11 +4,11 @@ module WelcomeHelper
   end
 
   def logged_in?
-    session[:physiqual_user_id] && current_user
+    session[:physiqual_user_id]
   end
 
   def token?
     # precondition: user is logged in (logged_in?)
-    current_user.physiqual_tokens.size
+    current_user && current_user.physiqual_tokens.size
   end
 end
