@@ -4,7 +4,7 @@ module WelcomeHelper
   end
 
   def logged_in?
-    session[:physiqual_user_id] && current_user
+    session[:physiqual_user_id]
   end
 
   def token?
