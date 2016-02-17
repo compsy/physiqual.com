@@ -9,6 +9,6 @@ module WelcomeHelper
 
   def token?
     # precondition: user is logged in (logged_in?)
-    current_user && current_user.physiqual_tokens.size
+    current_user && current_user.physiqual_token
   end
 end
