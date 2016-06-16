@@ -68,4 +68,8 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+# console
+gem 'awesome_print'
+gem 'pry-rails'
+
 gem 'omniauth-google-oauth2'
