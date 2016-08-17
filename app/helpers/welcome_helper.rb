@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module WelcomeHelper
   def current_user
     Physiqual::User.find_by_user_id(session[:physiqual_user_id])
