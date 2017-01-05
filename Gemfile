@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.3.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7.1'
 # Use SCSS for stylesheets
@@ -63,10 +63,10 @@ group :development, :test do
   gem 'rubocop'
 
   # Gems for better debugging
-  gem 'meta_request', require: 'meta_request'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'dotenv-rails'
+  gem 'meta_request', require: 'meta_request'
 end
 
 # console
