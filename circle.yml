@@ -2,7 +2,7 @@ machine:
   timezone:
     Europe/Amsterdam
   ruby:
-    version: 2.3.1
+    version: 2.3.3
 dependencies:
   pre:
     - ./bin/gemnasium_install
