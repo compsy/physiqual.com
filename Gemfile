@@ -63,10 +63,10 @@ group :development, :test do
   gem 'rubocop'
 
   # Gems for better debugging
-  gem 'meta_request', require: 'meta_request'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'dotenv-rails'
+  gem 'meta_request', require: 'meta_request'
 end
 
 # console

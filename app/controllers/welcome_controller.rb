@@ -3,11 +3,9 @@
 class WelcomeController < ApplicationController
   include WelcomeHelper
 
-  def index
-  end
+  def index; end
 
-  def example
-  end
+  def example; end
 
   def example_data
     render json: '{
