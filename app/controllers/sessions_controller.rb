@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class SessionsController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   def create
