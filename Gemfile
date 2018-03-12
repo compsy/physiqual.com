@@ -41,7 +41,7 @@ gem 'physiqual', github: 'roqua/physiqual'
 # gem 'capistrano-rails', group: :development
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.20.0'
   # Reduce log lines
   gem 'lograge'
   # Better logging for heroku
