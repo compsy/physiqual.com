@@ -17,7 +17,6 @@ gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -40,7 +39,7 @@ gem 'physiqual', github: 'roqua/physiqual'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :production do
+group :staging, :production do
   gem 'pg', '~> 0.20.0'
   # Reduce log lines
   gem 'lograge'
@@ -48,6 +47,8 @@ group :production do
   gem 'rails_12factor'
   # Reduce log noise
   gem 'quiet_assets'
+  # Javascript framework
+  gem 'therubyracer'
 end
 
 group :development do
