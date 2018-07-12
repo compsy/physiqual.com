@@ -67,6 +67,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
 
   gem 'rubocop'
 
@@ -76,6 +77,13 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'meta_request', require: 'meta_request'
 end
+
+group :test do
+  gem 'simplecov'
+end
+
+gem 'coveralls', '>= 0.8.21', require: false
+
 
 # console
 gem 'awesome_print'
