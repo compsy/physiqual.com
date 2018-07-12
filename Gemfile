@@ -84,7 +84,6 @@ end
 
 gem 'coveralls', '>= 0.8.21', require: false
 
-
 # console
 gem 'awesome_print'
 gem 'pry-rails'
