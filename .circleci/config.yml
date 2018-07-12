@@ -51,7 +51,7 @@ jobs:
       RAILS_ENV: test
       RACK_ENV: test
       COVERALLS_PARALLEL: true
-    parallelism: 3
+    parallelism: 1
     steps:
       - restore_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
