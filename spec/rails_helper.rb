@@ -5,9 +5,17 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'spec_helper'
 require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
+require 'dotenv'
+require 'capybara/rspec'
+
+# Start coverage report on CircleCI
+if ENV['CI']
+  require 'coveralls'
+  Coveralls.wear!
+  require 'simplecov'
+  SimpleCov.start
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -27,6 +35,12 @@ require 'rspec/rails'
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+
+Capybara.default_selector = :css
+Capybara.default_max_wait_time = 4
+Capybara.ignore_hidden_elements = false
+# Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.default_driver = :rack_test
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -51,4 +65,26 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.filter_run :focus
+  config.run_all_when_everything_filtered = true
+  config.filter_rails_from_backtrace!
+
+  if ENV['CI']
+    config.before(:example, :focus) do
+      raise 'This example was committed with `:focus` and should not have been'
+    end
+  end
+
+  config.before(type: :feature) do
+    Rails.application.config.action_dispatch.show_exceptions = true
+  end
+
+  config.after(type: :feature) do
+    Rails.application.config.action_dispatch.show_exceptions = false
+  end
+
+  config.append_after(:each) do
+    Capybara.reset_sessions!
+  end
 end

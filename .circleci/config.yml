@@ -1,0 +1,124 @@
+defaults: &defaults
+  docker:
+    - image: circleci/ruby:2.4.3-browsers
+    - image: circleci/redis
+      command: redis-server --requirepass redispassword
+      environment:
+        TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+    - image: circleci/postgres:9-alpine
+      environment:
+        POSTGRES_USER: circleci
+        POSTGRES_PASSWORD: ""
+        TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+    - image: circleci/mongo:3.6
+      environment:
+        TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+  environment:
+    TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+    RAILS_ENV: test
+    RACK_ENV: test
+  working_directory: ~/test
+
+version: 2.0
+
+jobs:
+  checkout_code:
+    <<: *defaults
+    steps:
+      - checkout
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/test
+
+  build:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/test/vendor/bundle
+
+  test_rspec:
+    <<: *defaults
+    environment:
+      TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+      RAILS_ENV: test
+      RACK_ENV: test
+      COVERALLS_PARALLEL: true
+    parallelism: 1
+    steps:
+      - restore_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+      - run: bundle --path vendor/bundle
+      - run: echo 127.0.0.1 docker.io | sudo tee -a /etc/hosts
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -wait tcp://localhost:27017 -wait tcp://localhost:6379 -timeout 1m # Waits for mongo / postgres / redis docker container to be available
+      - run: bundle exec rake db:create db:schema:load
+      - run: mkdir -p /tmp/workspace
+      - run: echo $CIRCLE_BUILD_NUM | tee /tmp/workspace/build_num
+      - run:
+          name: run tests
+          command: |
+            mkdir -p /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            echo $TEST_FILES
+            bundle exec rspec --format documentation \
+                              --format RspecJunitFormatter \
+                              --out /tmp/test-results/rspec.xml \
+                              -- $(echo "${TEST_FILES}" | sed -e 's/\n/\\n/' -e 's/ /\ /')
+      - store_test_results:   # TEST_FILES contains newlines, replace by spaces or we get errors
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - build_num
+
+  test_rubocop:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+      - run: bundle --path vendor/bundle
+      - run: bundle exec rubocop
+
+  coverage_report:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run:
+          name: complete report
+          command: |
+            curl -k https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN -d "payload[build_num]=$(cat /tmp/workspace/build_num)&payload[status]=done"
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - checkout_code
+      - build:
+          requires:
+            - checkout_code
+      - test_rubocop:
+          requires:
+            - build
+      - test_rspec:
+          requires:
+            - build
+      - coverage_report:
+          requires:
+            - test_rspec

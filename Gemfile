@@ -7,9 +7,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.3.3'
+ruby '2.4.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.7.1'
+gem 'rails', '~> 4.2.7'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -17,7 +17,6 @@ gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -40,7 +39,7 @@ gem 'physiqual', github: 'roqua/physiqual'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :production do
+group :staging, :production do
   gem 'pg', '~> 0.20.0'
   # Reduce log lines
   gem 'lograge'
@@ -48,6 +47,8 @@ group :production do
   gem 'rails_12factor'
   # Reduce log noise
   gem 'quiet_assets'
+  # Javascript framework
+  gem 'therubyracer'
 end
 
 group :development do
@@ -66,6 +67,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
 
   gem 'rubocop'
 
@@ -75,6 +77,13 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'meta_request', require: 'meta_request'
 end
+
+group :test do
+  gem 'capybara'
+  gem 'simplecov'
+end
+
+gem 'coveralls', '>= 0.8.21', require: false
 
 # console
 gem 'awesome_print'
