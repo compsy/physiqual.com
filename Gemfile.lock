@@ -69,7 +69,7 @@ GEM
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
-    byebug (10.0.2)
+    byebug (11.0.0)
     callsite (0.0.11)
     capybara (3.13.2)
       addressable
