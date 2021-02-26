@@ -227,7 +227,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
     rake (13.0.3)
-    rdoc (6.2.1)
+    rdoc (6.3.0)
     ref (2.0.0)
     regexp_parser (2.0.3)
     request_store (1.4.1)
@@ -275,7 +275,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sdoc (2.0.3)
+    sdoc (2.0.4)
       rdoc (>= 5.0)
     simplecov (0.16.1)
       docile (~> 1.1)
