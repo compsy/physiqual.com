@@ -232,7 +232,7 @@ GEM
     regexp_parser (2.0.3)
     request_store (1.4.1)
       rack (>= 1.4)
-    rexml (3.2.4)
+    rexml (3.2.5)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
